@@ -12,7 +12,7 @@ class Configs
     | Don't edit following values
     |
     */
-    const API_URL = 'https://sandbox-api.alopeyk.com/api/v2/';
+    const API_URL = 'https://api.alopeyk.com/api/v2/';
     const ADDRESS_TYPES = [
         'origin',
         'destination',
