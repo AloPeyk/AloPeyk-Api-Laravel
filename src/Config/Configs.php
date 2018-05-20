@@ -26,6 +26,11 @@ class Configs
         'tehran',
         'shemiranat',
         'rey',
+        'karaj',
+        'isfahan',
+        'tabriz',
+        'mashhad',
+        'shiraz',
     ];
 
 }
