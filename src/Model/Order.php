@@ -197,6 +197,7 @@ class Order
             'transport_type' => $this->getTransportType(),
             'has_return' => $this->getHasReturn(),
             'cashed' => $this->getCashed(),
+            'scheduled_at' => $this->getScheduledAt(),
         ];
         $orderArray['addresses'] = array_merge(
             [$this->getOriginAddress()->toArray($endPoint)],
