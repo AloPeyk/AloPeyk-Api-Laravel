@@ -26,6 +26,7 @@ class Order
         $this->addOriginAddress($originAddress);
         $this->setHasReturn(false);
         $this->setCashed(false);
+        $this->setScheduledAt(null);
         $this->destinationsAddress = [];
         if (!is_array($destinationsAddress)) {
             $this->addDestinationsAddress($destinationsAddress);
