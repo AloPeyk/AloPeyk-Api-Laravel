@@ -20,7 +20,9 @@ class Configs
     const TRANSPORT_TYPES = [
         'motorbike',
         'motor_taxi',
+        'cargo_s',
         'cargo',
+        'car',
     ];
     const CITIES = [
         'tehran',
