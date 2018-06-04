@@ -53,8 +53,10 @@ class ApiHandler
             throw new AloPeykApiException('Invalid ACCESS-TOKEN! All AloPeyk API endpoints support the JWT authentication protocol. To start sending authenticated HTTP requests you will need to use your JWT authorization token which is sent to you. Put it in: vendor/alopeyk/alopeyk-api-php/src/Config/Configs.php : TOKEN const');
         }
 
+        $url = (!!config('alopeyk.sandbox-api')) ? Configs::SANDBOX_URL : Configs::API_URL;
+
         $curlOptions = [
-            CURLOPT_URL => Configs::API_URL . $endPoint,
+            CURLOPT_URL => $url . $endPoint,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
