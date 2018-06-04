@@ -19,6 +19,7 @@ class Order
     private $destinationsAddress;
     private $hasReturn;
     private $cashed;
+    private $scheduledAt;
     public function __construct($transportType, $originAddress, $destinationsAddress)
     {
         $this->setTransportType($transportType);
@@ -90,6 +91,13 @@ class Order
     {
         $this->cashed = $cashed;
     }
+    /**
+     * @param mixed $scheduledAt
+     */
+    public function setScheduledAt($scheduledAt)
+    {
+        $this->scheduledAt = $scheduledAt;
+    }
     // Getters ---------------------------------------------------------------------------------------------------------
     /**
      * @return mixed
@@ -136,6 +144,13 @@ class Order
     public function getCashed()
     {
         return $this->cashed;
+    }
+    /**
+     * @param mixed $scheduledAt
+     */
+    public function getScheduledAt()
+    {
+        return $this->scheduledAt;
     }
     // Actions ---------------------------------------------------------------------------------------------------------
     /**
