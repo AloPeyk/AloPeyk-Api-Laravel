@@ -19,12 +19,14 @@ class Order
     private $destinationsAddress;
     private $hasReturn;
     private $cashed;
+    private $scheduledAt;
     public function __construct($transportType, $originAddress, $destinationsAddress)
     {
         $this->setTransportType($transportType);
         $this->addOriginAddress($originAddress);
         $this->setHasReturn(false);
         $this->setCashed(false);
+        $this->setScheduledAt(null);
         $this->destinationsAddress = [];
         if (!is_array($destinationsAddress)) {
             $this->addDestinationsAddress($destinationsAddress);
@@ -90,6 +92,13 @@ class Order
     {
         $this->cashed = $cashed;
     }
+    /**
+     * @param mixed $scheduledAt
+     */
+    public function setScheduledAt($scheduledAt)
+    {
+        $this->scheduledAt = $scheduledAt;
+    }
     // Getters ---------------------------------------------------------------------------------------------------------
     /**
      * @return mixed
@@ -137,6 +146,13 @@ class Order
     {
         return $this->cashed;
     }
+    /**
+     * @param mixed $scheduledAt
+     */
+    public function getScheduledAt()
+    {
+        return $this->scheduledAt;
+    }
     // Actions ---------------------------------------------------------------------------------------------------------
     /**
      * @return mixed
@@ -181,6 +197,7 @@ class Order
             'transport_type' => $this->getTransportType(),
             'has_return' => $this->getHasReturn(),
             'cashed' => $this->getCashed(),
+            'scheduled_at' => $this->getScheduledAt(),
         ];
         $orderArray['addresses'] = array_merge(
             [$this->getOriginAddress()->toArray($endPoint)],
