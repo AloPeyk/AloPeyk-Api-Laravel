@@ -50,7 +50,7 @@ class Order
     public function setTransportType($transportType)
     {
         $transportType = AloPeykValidator::sanitize($transportType);
-        if (!in_array($transportType, array_values(Configs::TRANSPORT_TYPES))) {
+        if (!in_array($transportType, array_keys(Configs::TRANSPORT_TYPES))) {
             throw new AloPeykApiException('Transport Type is not correct');
         }
         $this->transportType = $transportType;
@@ -183,10 +183,20 @@ class Order
      * @param $orderID
      * @return mixed
      */
-    public static function cancel($orderID)
+    public static function cancel($orderID, $comment)
     {
-        return ApiHandler::cancelOrder($orderID);
+        return ApiHandler::cancelOrder($orderID, $comment);
     }
+
+    /**
+     * @param $orderID
+     * @return mixed
+     */
+    public static function finish($orderID, $params)
+    {
+        return ApiHandler::finishOrder($orderID, $params);
+    }
+
     /**
      * @param $orderID
      * @return mixed
@@ -227,7 +237,7 @@ class Order
             throw new InvalidAddressException('is not valid!', 'Origin');
         }
         // CHECK TRANSPORT_TYPE
-        if (!in_array($this->getTransportType(), array_values(Configs::TRANSPORT_TYPES))) {
+        if (!in_array($this->getTransportType(), array_keys(Configs::TRANSPORT_TYPES))) {
             throw new InvalidOrderException('Transport Type is not correct!');
         }
         // CHECK ORIGIN
