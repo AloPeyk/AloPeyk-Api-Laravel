@@ -1,6 +1,7 @@
 <?php
 
 namespace AloPeyk\Api\RESTful\Config;
+use AloPeyk\Api\RESTful\ApiHandler;
 
 class Configs
 {
@@ -68,7 +69,7 @@ class Configs
      */
     private function setConfig()
     {
-        $this->appConfig = AloPeykApiHandler::getAppConfig();
+        $this->appConfig = ApiHandler::getAppConfig();
     }
 
     /**
