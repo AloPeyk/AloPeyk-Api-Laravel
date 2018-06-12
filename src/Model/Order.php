@@ -19,12 +19,20 @@ class Order
     private $destinationsAddress;
     private $hasReturn;
     private $cashed;
-    public function __construct($transportType, $originAddress, $destinationsAddress)
+    private $scheduled_at;
+
+    public function __construct($transportType, $originAddress, $destinationsAddress, $scheduled_at = null)
     {
         $this->setTransportType($transportType);
         $this->addOriginAddress($originAddress);
         $this->setHasReturn(false);
         $this->setCashed(false);
+
+        if($scheduled_at)
+        {
+            $this->setScheduledAt($scheduled_at);
+        }
+
         $this->destinationsAddress = [];
         if (!is_array($destinationsAddress)) {
             $this->addDestinationsAddress($destinationsAddress);
@@ -47,6 +55,16 @@ class Order
         }
         $this->transportType = $transportType;
     }
+
+    /**
+     * Set scheduled_at attribute
+     * @param $scheduled_at
+     */
+    public function setScheduledAt($scheduled_at)
+    {
+        $this->scheduled_at = $scheduled_at;
+    }
+
     /**
      * @param $originAddress
      * @throws AloPeykApiException
@@ -152,6 +170,15 @@ class Order
     {
         return ApiHandler::getPrice($this);
     }
+
+    /**
+     * @return string scheduled_at
+     */
+    public function getScheduledAt()
+    {
+        return $this->scheduled_at;
+    }
+
     /**
      * @param $orderID
      * @return mixed
@@ -181,6 +208,7 @@ class Order
             'transport_type' => $this->getTransportType(),
             'has_return' => $this->getHasReturn(),
             'cashed' => $this->getCashed(),
+            'scheduled_at' => $this->getScheduledAt()
         ];
         $orderArray['addresses'] = array_merge(
             [$this->getOriginAddress()->toArray($endPoint)],
