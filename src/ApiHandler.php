@@ -162,7 +162,7 @@ class ApiHandler
      * @return mixed
      * @throws AloPeykApiException
      */
-    public static function getLocationSuggestion($locationName)
+    public static function getLocationSuggestion($locationName, $latlng)
     {
         $curl = curl_init();
 
@@ -173,7 +173,7 @@ class ApiHandler
 
         $name = urlencode($locationName);
 
-        curl_setopt_array($curl, self::getCurlOptions("locations?input={$name}"));
+        curl_setopt_array($curl, self::getCurlOptions("locations?input={$name}&location={$latlng}"));
 
         return self::getApiResponse($curl);
     }
