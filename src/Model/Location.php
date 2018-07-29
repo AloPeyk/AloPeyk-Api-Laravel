@@ -21,8 +21,8 @@ class Location
      * @param $locationName
      * @return mixed
      */
-    public static function getSuggestions($locationName)
+    public static function getSuggestions($locationName, $latlng)
     {
-        return ApiHandler::getLocationSuggestion($locationName);
+        return ApiHandler::getLocationSuggestion($locationName, $latlng);
     }
 }
