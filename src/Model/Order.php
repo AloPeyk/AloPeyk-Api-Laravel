@@ -18,7 +18,9 @@ class Order
     private $originAddress;
     private $destinationsAddress;
     private $hasReturn;
-    private $cashed;
+    private $credit = true;
+    private $cashed = false;
+    private $payAtDestination = false;
     private $scheduled_at;
 
     public function __construct($transportType, $originAddress, $destinationsAddress, $scheduled_at = null)
@@ -26,11 +28,20 @@ class Order
         $this->setTransportType($transportType);
         $this->addOriginAddress($originAddress);
         $this->setHasReturn(false);
+        $this->setCredit(true);
         $this->setCashed(false);
+        $this->setPayAtDestination(false);
 
         if($scheduled_at)
         {
             $this->setScheduledAt($scheduled_at);
+        }
+
+        if($this->cashed){
+            $this->setCredit(false);
+        }else{
+            $this->setCredit(true);
+            $this->setPayAtDestination(false);
         }
 
         $this->destinationsAddress = [];
@@ -102,11 +113,25 @@ class Order
         $this->hasReturn = $hasReturn;
     }
     /**
+     * @param mixed $credit
+     */
+    public function setCredit($credit)
+    {
+        $this->credit = $credit;
+    }
+    /**
      * @param mixed $cashed
      */
     public function setCashed($cashed)
     {
         $this->cashed = $cashed;
+    }
+    /**
+     * @param mixed $payAtDestination
+     */
+    public function setPayAtDestination($payAtDestination)
+    {
+        $this->payAtDestination = $payAtDestination;
     }
     // Getters ---------------------------------------------------------------------------------------------------------
     /**
@@ -151,9 +176,23 @@ class Order
     /**
      * @return mixed
      */
+    public function getCredit()
+    {
+        return $this->credit;
+    }
+    /**
+     * @return mixed
+     */
     public function getCashed()
     {
         return $this->cashed;
+    }
+    /**
+     * @return mixed
+     */
+    public function getPayAtDestination()
+    {
+        return $this->payAtDestination;
     }
     // Actions ---------------------------------------------------------------------------------------------------------
     /**
@@ -214,15 +253,17 @@ class Order
     {
         $this->isValid();
         $orderArray = [
-            'city' => $this->city,
-            'transport_type' => $this->getTransportType(),
-            'has_return' => $this->getHasReturn(),
-            'cashed' => $this->getCashed(),
-            'scheduled_at' => $this->getScheduledAt()
+             'city' => $this->city,
+             'transport_type' => $this->getTransportType(),
+             'has_return' => $this->getHasReturn(),
+             'credit' => $this->getCredit(),
+             'cashed' => $this->getCashed(),
+             'pay_at_dest' => $this->getPayAtDestination(),
+             'scheduled_at' => $this->getScheduledAt()
         ];
         $orderArray['addresses'] = array_merge(
-            [$this->getOriginAddress()->toArray($endPoint)],
-            $this->getDestinationsAddressArray()
+             [$this->getOriginAddress()->toArray($endPoint)],
+             $this->getDestinationsAddressArray()
         );
         return $orderArray;
     }
