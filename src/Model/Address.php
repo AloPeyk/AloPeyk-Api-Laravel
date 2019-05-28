@@ -13,7 +13,6 @@ class Address
     // Attributes ------------------------------------------------------------------------------------------------------
 
     private $type;
-    private $city;
     private $latitude;
     private $longitude;
     private $address;
@@ -26,14 +25,12 @@ class Address
     /**
      * Address constructor.
      * @param $type
-     * @param $city
      * @param $latitude
      * @param $longitude
      */
-    public function __construct($type, $city, $latitude, $longitude)
+    public function __construct($type, $latitude, $longitude)
     {
         $this->setType($type);
-        $this->setCity($city);
         $this->setLatitude($latitude);
         $this->setLongitude($longitude);
     }
@@ -52,20 +49,6 @@ class Address
         }
 
         $this->type = $type;
-    }
-
-    /**
-     * @param $city
-     * @throws AloPeykApiException
-     */
-    public function setCity($city)
-    {
-        $city = AloPeykValidator::sanitize($city);
-        if (!in_array($city, array_values(Configs::CITIES))) {
-            throw new InvalidAddressException('This city is not supported yet');
-        }
-
-        $this->city = $city;
     }
 
     /**
@@ -155,14 +138,6 @@ class Address
     /**
      * @return mixed
      */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLatitude()
     {
         return $this->latitude;
@@ -237,7 +212,6 @@ class Address
 
         return [
             'type' => $this->getType(),
-            'city' => $this->getCity(),
             'lat' => $this->getLatitude(),
             'lng' => $this->getLongitude(),
             'address' => $this->getAddress(),
@@ -257,14 +231,14 @@ class Address
     private function isValid($endPoint)
     {
         if ($endPoint == "getPrice") {
-            if (!$this->getType() || !$this->getCity() || !$this->getLongitude() || !$this->getLatitude()) {
-                throw new AloPeykApiException('Fill Out This Attributes in all destinations: type , city , latitude , longitude');
+            if (!$this->getType() || !$this->getLongitude() || !$this->getLatitude()) {
+                throw new AloPeykApiException('Fill Out This Attributes in all destinations: type , latitude , longitude');
             }
         }
 
         if ($endPoint == "createOrder") {
             if (!$this->getAddress()) {
-                throw new AloPeykApiException('Fill Out This Attributes in all destinations: type , city , latitude , longitude , address');
+                throw new AloPeykApiException('Fill Out This Attributes in all destinations: type , latitude , longitude , address');
             }
         }
 
