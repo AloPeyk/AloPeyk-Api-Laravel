@@ -14,7 +14,6 @@ class Order
 {
     // Attributes ------------------------------------------------------------------------------------------------------
     private $transportType;
-    private $city;
     private $originAddress;
     private $destinationsAddress;
     private $hasReturn;
@@ -78,7 +77,6 @@ class Order
             throw new AloPeykApiException('Type Of Origin Address is not correct! please change it to `origin`.');
         }
         $this->originAddress = $originAddress;
-        $this->city = $originAddress->getCity();
     }
     /**
      * @param $newDestinationsAddress
@@ -214,7 +212,6 @@ class Order
     {
         $this->isValid();
         $orderArray = [
-            'city' => $this->city,
             'transport_type' => $this->getTransportType(),
             'has_return' => $this->getHasReturn(),
             'cashed' => $this->getCashed(),
@@ -232,10 +229,6 @@ class Order
      */
     private function isValid()
     {
-        // CHECK CITY
-        if (AloPeykValidator::sanitize($this->city) != $this->getOriginAddress()->getCity()) {
-            throw new InvalidAddressException('is not valid!', 'Origin');
-        }
         // CHECK TRANSPORT_TYPE
         if (!in_array($this->getTransportType(), array_keys(Configs::TRANSPORT_TYPES))) {
             throw new InvalidOrderException('Transport Type is not correct!');
