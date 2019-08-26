@@ -30,4 +30,14 @@
       "AloPeyk\\Api\\RESTful\\": "src/"
     }
   }
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AloPeyk\\Api\\RESTful\\Provider\\AloPeykServiceProvider"
+      ],
+      "aliases": {
+        "AloPeykApiHandler": "AloPeyk\\Api\\RESTful\\Facade\\AloPeykApiHandlerFacade"
+      }
+    }
+  }
 }
