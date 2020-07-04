@@ -7,6 +7,8 @@
 
 This package is built to facilitate application development for AloPeyk RESTful API. For more information about this api, please visit [AloPeyk Documents](https://docs.alopeyk.com/)
 
+:warning: Use v1.0.7 for Laravel 5
+
 ## Installation
 First of all, You need an [ACCESS-TOKEN](https://alopeyk.com/contact?unit=sales). 
 All Alopeyk API endpoints support the JWT authentication protocol. To start sending authenticated HTTP requests you will need to use your JWT authorization token which is sent to you.
@@ -19,13 +21,13 @@ Link to Packagist: https://packagist.org/packages/alopeyk/alopeyk-api-laravel
 
 
 To install this package you will need: 
-- Laravel 5+
+- Laravel 7+
 
 Install via composer 
 edit your composer.json to require the package.
 ```
 "require": {
-    "alopeyk/alopeyk-api-laravel": "1.*"
+    "alopeyk/alopeyk-api-laravel": "2.*"
 }
 ```
 
