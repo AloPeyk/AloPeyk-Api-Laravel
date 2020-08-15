@@ -38,7 +38,6 @@ class AloPeykValidator
         return preg_match('/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?),[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/', $lat . ',' . $lng);
     }
 
-
     /**
      * Sanitize a given string
      * @param $string
@@ -46,7 +45,25 @@ class AloPeykValidator
      */
     public static function sanitize($string)
     {
-        return strtolower(trim(filter_var($string, FILTER_SANITIZE_STRING)));
+        return self::clean_string($string);
     }
 
+    /**
+     * Cleaning a UTF-8 String
+     *
+     * @param string $string
+     * @return void
+     */
+    public static function clean_string($string)
+    {
+        $s = trim($string);
+        $s = iconv("UTF-8", "UTF-8//IGNORE", $s); // drop all non utf-8 characters
+      
+        // this is some bad utf-8 byte sequence that makes mysql complain - control and formatting i think
+        $s = preg_replace('/(?>[\x00-\x1F]|\xC2[\x80-\x9F]|\xE2[\x80-\x8F]{2}|\xE2\x80[\xA4-\xA8]|\xE2\x81[\x9F-\xAF])/', ' ', $s);
+      
+        $s = preg_replace('/\s+/', ' ', $s); // reduce all multiple whitespace to a single space
+      
+        return $s;
+    }
 }
