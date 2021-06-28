@@ -1,17 +1,16 @@
 <?php
 
-namespace AloPeyk\Api\RESTful;
+namespace AloPeyk\AloPeyk;
 
-use AloPeyk\Api\RESTful\Config\Configs;
-use AloPeyk\Api\RESTful\Exception\AloPeykApiException;
-use AloPeyk\Api\RESTful\Exception\InvalidLatLongException;
-use AloPeyk\Api\RESTful\Exception\InvalidLocationNameException;
-use AloPeyk\Api\RESTful\Exception\InvalidOrderException;
-use AloPeyk\Api\RESTful\Validator\AloPeykValidator;
+use AloPeyk\AloPeyk\Config\Configs;
+use AloPeyk\AloPeyk\Exception\AloPeykApiException;
+use AloPeyk\AloPeyk\Exception\InvalidLatLongException;
+use AloPeyk\AloPeyk\Exception\InvalidLocationNameException;
+use AloPeyk\AloPeyk\Exception\InvalidOrderException;
+use AloPeyk\AloPeyk\Validator\AloPeykValidator;
 
 class ApiHandler
 {
-
     private static $localToken;
 
     /**

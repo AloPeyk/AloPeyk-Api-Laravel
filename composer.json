@@ -1,7 +1,7 @@
 {
   "name": "alopeyk/alopeyk-api-laravel",
   "type": "package",
-  "description": "Laravel 5.* Integration With RESTful Api Of AloPeyk",
+  "description": "Laravel 8.* Integration With RESTful Api Of AloPeyk",
   "keywords": [
     "AloPeyk",
     "Business",
@@ -23,11 +23,11 @@
   ],
   "license": "MIT",
   "require": {
-    "illuminate/support": "~7"
+    "illuminate/support": "~8"
   },
   "autoload": {
     "psr-4": {
-      "AloPeyk\\Api\\RESTful\\": "src/"
+      "AloPeyk\\AloPeyk\\": "src/"
     }
   }
 }

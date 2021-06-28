@@ -1,9 +1,8 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Model;
+namespace AloPeyk\AloPeyk\Model;
 
-use AloPeyk\Api\RESTful\ApiHandler;
-
+use AloPeyk\AloPeyk\ApiHandler;
 
 class Location
 {

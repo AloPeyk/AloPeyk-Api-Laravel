@@ -1,6 +1,6 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Exception;
+namespace AloPeyk\AloPeyk\Exception;
 
 use Exception;
 
