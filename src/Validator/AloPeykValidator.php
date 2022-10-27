@@ -1,6 +1,6 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Validator;
+namespace AloPeyk\AloPeyk\Validator;
 
 class AloPeykValidator
 {
@@ -48,5 +48,4 @@ class AloPeykValidator
     {
         return strtolower(trim(filter_var($string, FILTER_SANITIZE_STRING)));
     }
-
 }

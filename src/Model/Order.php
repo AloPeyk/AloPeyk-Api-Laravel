@@ -1,14 +1,14 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Model;
+namespace AloPeyk\AloPeyk\Model;
 
-use AloPeyk\Api\RESTful\ApiHandler;
-use AloPeyk\Api\RESTful\Config\Configs;
-use AloPeyk\Api\RESTful\Exception\AloPeykApiException;
-use AloPeyk\Api\RESTful\Exception\InvalidAddressException;
-use AloPeyk\Api\RESTful\Exception\InvalidOrderException;
-use AloPeyk\Api\RESTful\Exception\InvalidTransportTypeException;
-use AloPeyk\Api\RESTful\Validator\AloPeykValidator;
+use AloPeyk\AloPeyk\ApiHandler;
+use AloPeyk\AloPeyk\Config\Configs;
+use AloPeyk\AloPeyk\Exception\AloPeykApiException;
+use AloPeyk\AloPeyk\Exception\InvalidAddressException;
+use AloPeyk\AloPeyk\Exception\InvalidOrderException;
+use AloPeyk\AloPeyk\Exception\InvalidTransportTypeException;
+use AloPeyk\AloPeyk\Validator\AloPeykValidator;
 
 class Order
 {
@@ -28,8 +28,7 @@ class Order
         $this->setHasReturn(false);
         $this->setCashed(false);
 
-        if($scheduled_at)
-        {
+        if ($scheduled_at) {
             $this->setScheduledAt($scheduled_at);
         }
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Config;
-use AloPeyk\Api\RESTful\ApiHandler;
+namespace AloPeyk\AloPeyk\Config;
+
+use AloPeyk\AloPeyk\ApiHandler;
 
 class Configs
 {
@@ -79,6 +80,4 @@ class Configs
     {
         return $this->appConfig;
     }
-
 }
-

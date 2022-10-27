@@ -21,13 +21,13 @@ Link to Packagist: https://packagist.org/packages/alopeyk/alopeyk-api-laravel
 
 
 To install this package you will need: 
-- Laravel 7+
+- Laravel 8+
 
 Install via composer 
 edit your composer.json to require the package.
 ```
 "require": {
-    "alopeyk/alopeyk-api-laravel": "2.*"
+    "alopeyk/alopeyk-api-laravel": "3.*"
 }
 ```
 
@@ -36,12 +36,12 @@ Then run ```  composer update  ``` in your terminal to pull it in.
 Once this has finished, you will need to add the service provider to the providers array in your app.php config as follows:
 
 ```php
-AloPeyk\Api\RESTful\Provider\AloPeykServiceProvider::class
+AloPeyk\AloPeyk\Provider\AloPeykServiceProvider::class
 ```
 
 Next, also in the app.php config file, under the aliases array, you may want to add the JWTAuth facade.
 ```php
-'AloPeykApiHandler' => AloPeyk\Api\RESTful\Facade\AloPeykApiHandlerFacade::class,
+'AloPeykApiHandler' => AloPeyk\AloPeyk\Facade\AloPeykApiHandlerFacade::class,
 ```
 
 Finally, you will want to publish the config using the following command:
@@ -56,9 +56,9 @@ $ php artisan vendor:publish --tag=alopeyk
 
 namespace App\Http\Controllers;
 
-use AloPeyk\Api\RESTful\Model\Address;
-use AloPeyk\Api\RESTful\Model\Location;
-use AloPeyk\Api\RESTful\Model\Order;
+use AloPeyk\AloPeyk\Model\Address;
+use AloPeyk\AloPeyk\Model\Location;
+use AloPeyk\AloPeyk\Model\Order;
 use AloPeykApiHandler;
 
 class TestController extends Controller

@@ -1,12 +1,12 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Model;
+namespace AloPeyk\AloPeyk\Model;
 
-use AloPeyk\Api\RESTful\Config\Configs;
-use AloPeyk\Api\RESTful\Exception\AloPeykApiException;
-use AloPeyk\Api\RESTful\Exception\InvalidAddressException;
-use AloPeyk\Api\RESTful\Exception\InvalidLatLongException;
-use AloPeyk\Api\RESTful\Validator\AloPeykValidator;
+use AloPeyk\AloPeyk\Config\Configs;
+use AloPeyk\AloPeyk\Exception\AloPeykApiException;
+use AloPeyk\AloPeyk\Exception\InvalidAddressException;
+use AloPeyk\AloPeyk\Exception\InvalidLatLongException;
+use AloPeyk\AloPeyk\Validator\AloPeykValidator;
 
 class Address
 {
@@ -270,6 +270,4 @@ class Address
 
         return true;
     }
-
-
 }

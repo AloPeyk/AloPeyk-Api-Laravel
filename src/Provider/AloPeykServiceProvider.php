@@ -1,8 +1,8 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Provider;
+namespace AloPeyk\AloPeyk\Provider;
 
-use AloPeyk\Api\RESTful\ApiHandler;
+use AloPeyk\AloPeyk\ApiHandler;
 use Illuminate\Support\ServiceProvider;
 
 class AloPeykServiceProvider extends ServiceProvider
@@ -29,7 +29,8 @@ class AloPeykServiceProvider extends ServiceProvider
         });
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/alopeyk.php', 'alopeyk'
+            __DIR__ . '/../Config/alopeyk.php',
+            'alopeyk'
         );
     }
 }

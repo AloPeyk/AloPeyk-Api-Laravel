@@ -1,6 +1,6 @@
 <?php
 
-namespace AloPeyk\Api\RESTful\Facade;
+namespace AloPeyk\AloPeyk\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
